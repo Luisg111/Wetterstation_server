@@ -23,6 +23,7 @@ func CreateNewHttpServer(db database.Database) HttpServer {
 
 func (server *HttpServer) StartServer() {
 	http.HandleFunc("/weather_data", server.weatherHandler)
+	go http.ListenAndServe(":80", nil)
 	http.ListenAndServe(":8080", nil)
 }
 
